@@ -1,0 +1,9 @@
+{
+  "domain": "sony_vpl_adcp",
+  "name": "Sony VPL ADCP",
+  "version": "0.1.0",
+  "documentation": "https://github.com/ipublic/sony-vpl-adcp",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@your-github-username"]
+}
