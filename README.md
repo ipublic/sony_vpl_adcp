@@ -1,6 +1,6 @@
-# Sony VPL-XW6000 Home Assistant Integration
+# Sony VPL ADCP Home Assistant Integration
 
-This integration allows you to control and monitor your Sony VPL-XW6000 projector using Sony's ADCP (Advanced Display Control Protocol) over a network. It supports features such as power control, input switching, and status monitoring.
+This integration allows you to control and monitor your Sony VPL home theater projector using Sony's ADCP (Advanced Display Control Protocol) over a network. It supports features such as power control, input switching, and status monitoring.
 
 ---
 
@@ -15,7 +15,7 @@ This integration allows you to control and monitor your Sony VPL-XW6000 projecto
 
 ## **Prerequisites**
 
-1. **Sony VPL-XW6000 Projector**:
+1. **Sony VPL Projector**:
    - Ensure the projector is connected to the same network as your Home Assistant instance.
    - Enable **ADCP** and the **advertisement service** on the projector (see instructions below).
 
@@ -26,7 +26,7 @@ This integration allows you to control and monitor your Sony VPL-XW6000 projecto
 
 ## **Configuring the Projector for ADCP and Advertisement**
 
-To enable ADCP and the advertisement service on your Sony VPL-XW6000 projector, follow these steps:
+To enable ADCP and the advertisement service on your Sony VPL projector, follow these steps:
 
 ### **1. Enable ADCP**
 1. **Access the Projector's Settings**:
@@ -80,14 +80,14 @@ To enable ADCP and the advertisement service on your Sony VPL-XW6000 projector, 
 ## **Installing the Integration**
 
 1. **Copy the Integration Files**:
-   - Copy the `sony_vpl_xw6000` folder into your Home Assistant `custom_components` directory.
+   - Copy the `sony_vpl_adcp` folder into your Home Assistant `custom_components` directory.
 
 2. **Restart Home Assistant**:
    - Restart Home Assistant to load the custom integration.
 
 3. **Add the Integration**:
    - Go to **Settings > Devices & Services > Add Integration**.
-   - Search for **Sony VPL-XW6000** and select it.
+   - Search for **Sony VPL ** and select it.
 
 4. **Configure the Integration**:
    - Enter the projector's IP address.
@@ -135,7 +135,7 @@ Once the integration is set up:
 
 ## **Support**
 
-For issues or feature requests, please open an issue on the [GitHub repository](https://github.com/your-repo/sony-vpl-xw6000).
+For issues or feature requests, please open an issue on the [GitHub repository](https://github.com/ipublic/sony_vpl_adcp).
 
 ---
 
