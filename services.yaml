@@ -10,9 +10,3 @@ send_menu_command:
     command:
       description: "The menu command to send (e.g., menu_open, menu_close, menu_up)."
       example: "menu_open"
-set_input_source:
-  description: "Set the input source of the projector."
-  fields:
-    source:
-      description: "The input source to set (e.g., HDMI1, HDMI2)."
-      example: "HDMI1"

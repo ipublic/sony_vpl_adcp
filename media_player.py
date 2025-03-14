@@ -13,6 +13,7 @@ from .const import DEFAULT_MODEL
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the media player platform."""
     host = config_entry.data.get("host")
@@ -34,7 +35,14 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     # Determine the model from the advertisement attributes
     model = attributes.get("ModelName", DEFAULT_MODEL)
 
-    async_add_entities([SonyProjectorMediaPlayer(host, authentication, username, password, model, attributes)])
+    async_add_entities(
+        [
+            SonyProjectorMediaPlayer(
+                host, authentication, username, password, model, attributes
+            )
+        ]
+    )
+
 
 class SonyProjectorMediaPlayer(MediaPlayerEntity):
     """Representation of the Sony VPL-XW6000 as a media player."""
@@ -46,7 +54,9 @@ class SonyProjectorMediaPlayer(MediaPlayerEntity):
         self._password = password
         self._model = model
         self._attributes = attributes
-        self._client = SonyADCPClient(host, username, password, authentication, model=model)
+        self._client = SonyADCPClient(
+            host, username, password, authentication, model=model
+        )
         self._is_on = False
         self._input_source = None
         self._available = True  # Track availability

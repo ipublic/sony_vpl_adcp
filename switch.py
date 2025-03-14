@@ -11,6 +11,7 @@ from .const import DOMAIN, ADCP_COMMANDS, ADCP_RESPONSES, DEFAULT_MODEL
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the switch platform."""
     host = config_entry.data.get("host")
@@ -51,7 +52,14 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     await coordinator.async_config_entry_first_refresh()
 
-    async_add_entities([SonyProjectorPowerSwitch(coordinator, host, authentication, username, password, model)])
+    async_add_entities(
+        [
+            SonyProjectorPowerSwitch(
+                coordinator, host, authentication, username, password, model
+            )
+        ]
+    )
+
 
 class SonyProjectorPowerSwitch(SwitchEntity):
     """Representation of the projector power switch."""
@@ -64,7 +72,9 @@ class SonyProjectorPowerSwitch(SwitchEntity):
         self._username = username
         self._password = password
         self._model = model
-        self._client = SonyADCPClient(host, username, password, authentication, model=model)
+        self._client = SonyADCPClient(
+            host, username, password, authentication, model=model
+        )
 
     @property
     def name(self):

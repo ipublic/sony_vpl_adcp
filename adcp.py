@@ -7,10 +7,19 @@ from homeassistant.helpers.entity import Entity
 
 _LOGGER = logging.getLogger(__name__)
 
+
 class SonyADCPClient:
     """Client for communicating with the Sony projector using ADCP protocol."""
 
-    def __init__(self, host, username=None, password=None, authentication=False, port=53484, model=DEFAULT_MODEL):
+    def __init__(
+        self,
+        host,
+        username=None,
+        password=None,
+        authentication=False,
+        port=53484,
+        model=DEFAULT_MODEL,
+    ):
         self.host = host
         self.port = port
         self.username = username
@@ -57,7 +66,9 @@ class SonyADCPClient:
             _LOGGER.error("Socket error while sending command '%s': %s", command, err)
             return None
         except Exception as err:
-            _LOGGER.error("Unexpected error while sending command '%s': %s", command, err)
+            _LOGGER.error(
+                "Unexpected error while sending command '%s': %s", command, err
+            )
             return None
 
     def get_advertisement_attributes(self):
@@ -115,7 +126,9 @@ class SonyADCPClient:
             response = self.socket.recv(1024).decode("utf-8").strip()
             return response
         except Exception as err:
-            _LOGGER.error("Failed to retrieve current value for command %s: %s", command, err)
+            _LOGGER.error(
+                "Failed to retrieve current value for command %s: %s", command, err
+            )
             return None
 
     def disconnect(self):
@@ -128,6 +141,7 @@ class SonyADCPClient:
                 _LOGGER.error("Error while closing socket: %s", err)
         else:
             _LOGGER.warning("Socket is already closed.")
+
 
 class SonyADCPDevice(Entity):
     """Representation of a Sony projector as a Home Assistant entity."""

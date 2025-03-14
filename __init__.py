@@ -1,4 +1,5 @@
-"""Sony VPL-XW6000 integration."""
+"""Sony VPL home theater laser projector integration."""
+
 import logging  # Added logging import
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -9,6 +10,7 @@ from .adcp import SonyADCPClient  # Import SonyADCPClient
 from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)  # Define logger
+
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up the Sony VPL-XW6000 integration from a config entry."""
@@ -24,12 +26,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data[DOMAIN][entry.entry_id] = coordinator
     return True
 
+
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     coordinator = hass.data[DOMAIN].pop(entry.entry_id, None)
     if coordinator:
         await coordinator.async_close()  # Ensure proper cleanup
     return True
+
 
 async def fetch_projector_status(config):
     """Fetch the projector's status."""

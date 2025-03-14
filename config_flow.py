@@ -1,9 +1,11 @@
 """Config flow for Sony VPL-XW6000 integration."""
+
 from homeassistant import config_entries
 import voluptuous as vol
 import ipaddress
 from .adcp import SonyADCPClient
 from .const import DOMAIN
+
 
 class SonyVPLXW6000ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Sony VPL-XW6000."""
@@ -28,7 +30,9 @@ class SonyVPLXW6000ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     authentication=authentication,
                 )
                 client.connect()
-                attributes = client.get_projector_attributes()  # Fetch projector attributes
+                attributes = (
+                    client.get_projector_attributes()
+                )  # Fetch projector attributes
                 client.disconnect()
 
                 # Store attributes in the config entry
@@ -51,12 +55,14 @@ class SonyVPLXW6000ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     def _get_data_schema(self):
         """Return the data schema for the configuration form."""
-        return vol.Schema({
-            vol.Required("host"): vol.All(str, self._validate_ip),
-            vol.Optional("authentication", default=False): bool,
-            vol.Optional("username"): str,
-            vol.Optional("password"): str,
-        })
+        return vol.Schema(
+            {
+                vol.Required("host"): vol.All(str, self._validate_ip),
+                vol.Optional("authentication", default=False): bool,
+                vol.Optional("username"): str,
+                vol.Optional("password"): str,
+            }
+        )
 
     def _validate_ip(self, value):
         """Validate the IP address."""

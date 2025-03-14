@@ -5,6 +5,7 @@ import logging
 
 _LOGGER = logging.getLogger(__name__)
 
+
 class SonyADSLClient:
     """Client for communicating with the Sony projector using ADSL protocol."""
 

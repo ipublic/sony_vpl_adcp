@@ -5,6 +5,7 @@ from homeassistant.exceptions import PlatformNotReady
 from .adcp import SonyADCPClient
 from .const import DEFAULT_MODEL
 
+
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up the sensor platform."""
     host = config_entry.data.get("host")
@@ -21,17 +22,23 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     except Exception as e:
         raise PlatformNotReady(f"Failed to connect to Sony projector: {e}")
 
+    # Create sensor entities for each command
     sensors = [
-        SonyProjectorSensor(host, authentication, username, password, model, command, description)
+        SonyProjectorSensor(
+            host, authentication, username, password, model, command, description
+        )
         for command, description in commands.items()
     ]
 
     async_add_entities(sensors)
 
+
 class SonyProjectorSensor(SensorEntity):
     """Representation of a Sony projector sensor."""
 
-    def __init__(self, host, authentication, username, password, model, command, description):
+    def __init__(
+        self, host, authentication, username, password, model, command, description
+    ):
         self._host = host
         self._authentication = authentication
         self._username = username
@@ -39,7 +46,9 @@ class SonyProjectorSensor(SensorEntity):
         self._model = model
         self._command = command
         self._description = description
-        self._client = SonyADCPClient(host, username, password, authentication, model=model)
+        self._client = SonyADCPClient(
+            host, username, password, authentication, model=model
+        )
         self._state = None
 
     @property
@@ -67,15 +76,4 @@ class SonyProjectorSensor(SensorEntity):
             self._state = None
             self.hass.logger.error(f"Failed to update sensor {self.name}: {e}")
 
-{
-  "domain": "sony_vpl_adcp",
-  "name": "Sony VPL ADCP",
-  "version": "0.1.0",
-  "documentation": "https://github.com/ipublic/sony-vpl-adcp",
-  "dependencies": [],
-  "codeowners": ["@ipublic"],
-  "requirements": [],
-  "iot_class": "local_polling",
-  "integration_type": "device",
-  "supported_platforms": ["media_player", "sensor"]
-}
+

@@ -35,8 +35,8 @@ ADCP_COMMANDS_BY_MODEL = {
         "menu_enter": "MENU ENTER\n",
         "menu_back": "MENU BACK\n",
         "menu_info": "MENU INFO\n",  # Added for consistency
-        "menu_open": "MENU 1\n",     # Added for consistency
-        "menu_close": "MENU 0\n",    # Added for consistency
+        "menu_open": "MENU 1\n",  # Added for consistency
+        "menu_close": "MENU 0\n",  # Added for consistency
     },
     "VPL-XW5000": {
         "menu_up": "MENU UP\n",

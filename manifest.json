@@ -1,9 +1,17 @@
 {
   "domain": "sony_vpl_adcp",
-  "name": "Sony VPL ADCP",
+  "name": "Sony Projector ADCP",
   "version": "0.1.0",
-  "documentation": "https://github.com/ipublic/sony-vpl-adcp",
-  "requirements": [],
+  "documentation": "https://github.com/ipublic/sony_vpl_adcp",
   "dependencies": [],
-  "codeowners": ["@your-github-username"]
+  "codeowners": [
+    "@ipublic"
+  ],
+  "requirements": [],
+  "iot_class": "local_polling",
+  "supported_platforms": [
+    "media_player",
+    "sensor"
+  ],
+  "integration_type": "device"
 }
